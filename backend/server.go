@@ -1,4 +1,4 @@
-package backend
+package main
 
 import (
 	"encoding/json"
@@ -36,10 +36,10 @@ func getCryptoNews(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(data)
 }
 
-// Setup routes
+// SetupRoutes initializes all API routes
 func SetupRoutes() *http.ServeMux {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/api/crypto-prices", getCryptoPrices)
+	mux.HandleFunc("/api/crypto", getCryptoPrices)
 	mux.HandleFunc("/api/market-trends", getMarketTrends)
 	mux.HandleFunc("/api/news", getCryptoNews)
 	return mux
